@@ -1,4 +1,4 @@
-package com.example.a20151203.testbase;
+package com.raokui.testbase;
 
 import org.junit.Test;
 

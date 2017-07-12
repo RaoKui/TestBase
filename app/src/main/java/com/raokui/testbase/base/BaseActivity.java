@@ -1,4 +1,4 @@
-package com.example.a20151203.testbase.base;
+package com.raokui.testbase.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,12 +14,13 @@ import butterknife.Unbinder;
  * Created by RaoKui on 2017/7/11.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCompatActivity {
+
+    public T mPresenter;
 
     protected final String TAG = this.getClass().getSimpleName();
 
     private Unbinder mUnbinder;
-
 
 
     @Override
@@ -27,11 +28,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         mUnbinder = ButterKnife.bind(this);
+        mPresenter = initPresenter();
+        mPresenter.attach((V) this);
         init();
         initData();
-        initEvent();
+        initListener();
         Logger.i("onCreate: ");
     }
+
+    protected abstract T initPresenter();
 
     protected abstract int getLayoutId();
 
@@ -39,7 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initData();
 
-    protected abstract void initEvent();
+    protected abstract void initListener();
 
     @Override
     protected void onStart() {
@@ -76,5 +81,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         Logger.d(TAG, "onDestroy: ");
         mUnbinder.unbind();
+        mPresenter.detach();
     }
 }

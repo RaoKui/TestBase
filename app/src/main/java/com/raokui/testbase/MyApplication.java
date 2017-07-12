@@ -1,8 +1,6 @@
-package com.example.a20151203.testbase;
+package com.raokui.testbase;
 
 import android.app.Application;
-
-import com.orhanobut.logger.Logger;
 
 /**
  * Created by 20151203 on 2017/7/11.
@@ -18,7 +16,7 @@ public class MyApplication extends Application{
 //                .hideThreadInfo()               // default shown
 //                .logLevel(LogLevel.NONE)        // default LogLevel.FULL
 //                .methodOffset(2)                // default 0
-//                .logAdapter(new AndroidLogAdapter()); //default AndroidLogAdapter
+//               ; //default AndroidLogAdapter
 //    }
     }
 }

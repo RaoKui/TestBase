@@ -1,4 +1,4 @@
-package com.example.a20151203.testbase;
+package com.raokui.testbase;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
