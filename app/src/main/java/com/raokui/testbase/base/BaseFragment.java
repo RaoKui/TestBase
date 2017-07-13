@@ -12,13 +12,18 @@ import android.view.ViewGroup;
 
 import com.orhanobut.logger.Logger;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * Created by RaoKui on 2017/7/12.
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragment {
 
+    public T mPresenter;
 
+    private Unbinder mUnbinder;
     /**
      * Fragment Content view
      */
@@ -82,6 +87,7 @@ public abstract class BaseFragment extends Fragment {
             int layoutResId = getLayoutId();
             if (layoutResId > 0) {
                 inflateView = inflater.inflate(getLayoutId(), container, false);
+                mUnbinder = ButterKnife.bind(this, inflateView);
             }
 
             // 解决点击穿透问题
@@ -110,5 +116,10 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initListener();
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mUnbinder.unbind();
+    }
 }
 
