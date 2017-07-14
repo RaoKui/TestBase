@@ -1,4 +1,4 @@
-package com.raokui.testbase;
+package com.raokui.testbase.ui.activity;
 
 
 import android.graphics.Bitmap;
@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.raokui.testbase.R;
 import com.raokui.testbase.base.BaseActivity;
 import com.raokui.testbase.base.BasePresenter;
 import com.raokui.testbase.contract.MainContract;
@@ -35,7 +36,6 @@ public class MainActivity extends BaseActivity<MainContract.View, MainPresenter>
     NavigationView navView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-
     @BindView(R.id.iv_image)
     ImageView imageView;
 

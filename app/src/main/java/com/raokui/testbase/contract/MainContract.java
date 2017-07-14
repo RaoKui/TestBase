@@ -3,7 +3,7 @@ package com.raokui.testbase.contract;
 import com.raokui.testbase.base.BaseView;
 
 /**
- * Created by 20151203 on 2017/7/12.
+ * Created by RaoKui on 2017/7/12.
  */
 
 public interface MainContract {

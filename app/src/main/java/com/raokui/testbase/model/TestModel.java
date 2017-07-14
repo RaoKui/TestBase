@@ -12,7 +12,7 @@ import rx.Observable;
 import rx.Subscriber;
 
 /**
- * Created by 20151203 on 2017/7/14.
+ * Created by RaoKui on 2017/7/14.
  */
 
 public class TestModel {
