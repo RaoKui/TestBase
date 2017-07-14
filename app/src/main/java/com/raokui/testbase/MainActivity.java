@@ -1,6 +1,8 @@
 package com.raokui.testbase;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -11,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.raokui.testbase.base.BaseActivity;
 import com.raokui.testbase.base.BasePresenter;
@@ -20,8 +23,8 @@ import com.raokui.testbase.presenter.MainPresenter;
 import butterknife.BindView;
 
 
-public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener ,MainContract.View{
+public class MainActivity extends BaseActivity<MainContract.View, MainPresenter>
+        implements NavigationView.OnNavigationItemSelectedListener, MainContract.View {
 
 
     @BindView(R.id.toolbar)
@@ -33,8 +36,16 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
+    @BindView(R.id.iv_image)
+    ImageView imageView;
+
+//    @Override
+//    protected MainPresenter initPresenter() {
+//        return new MainPresenter();
+//    }
+
     @Override
-    protected BasePresenter initPresenter() {
+    protected MainPresenter initPresenter() {
         return new MainPresenter();
     }
 
@@ -67,7 +78,8 @@ public class MainActivity extends BaseActivity
 
     @Override
     protected void initData() {
-
+        String path = "http://a.hiphotos.baidu.com/zhidao/pic/item/a50f4bfbfbedab640bc293fbf636afc379311e5c.jpg";
+        mPresenter.login(path);
     }
 
     @Override
@@ -75,6 +87,14 @@ public class MainActivity extends BaseActivity
 
     }
 
+    @Override
+    public void showPic(byte[] bytes) {
+        if (bytes != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            imageView.setImageBitmap(bitmap);
+        }
+
+    }
 
     @Override
     public void onBackPressed() {

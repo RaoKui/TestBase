@@ -14,4 +14,6 @@ public abstract class BasePresenter<V> {
     public void detach() {
         this.mView = null;
     }
+
+
 }

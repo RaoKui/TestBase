@@ -1,6 +1,5 @@
 package com.raokui.testbase.contract;
 
-import com.raokui.testbase.base.BasePresenter;
 import com.raokui.testbase.base.BaseView;
 
 /**
@@ -9,11 +8,11 @@ import com.raokui.testbase.base.BaseView;
 
 public interface MainContract {
     interface Presenter {
-        void login();
+        void login(String path);
     }
 
     interface View extends BaseView {
-
+        void showPic(byte[] bytes);
     }
 
 }
